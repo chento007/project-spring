@@ -94,6 +94,7 @@ public class SecurityConfig {
             auth.requestMatchers(HttpMethod.PUT, "/api/v1/products/**").hasAuthority("SCOPE_product:update");
             auth.requestMatchers(HttpMethod.DELETE, "/api/v1/products/**").hasAuthority("SCOPE_product:delete");
 
+
             auth.requestMatchers(HttpMethod.GET, "/api/v1/roles/**").permitAll();
             auth.anyRequest().permitAll();
         });

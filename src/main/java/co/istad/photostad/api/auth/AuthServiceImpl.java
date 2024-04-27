@@ -68,7 +68,7 @@ public class AuthServiceImpl implements AuthService {
     public String register(RegisterDto registerDto) {
 
         User user = authMapStruct.registerDtoToUser(registerDto);
-        user.setIsVerified(false);
+        user.setIsVerified(true);
         user.setPassword(encoder.encode(registerDto.password()));
         user.setUuid(UUID.randomUUID().toString());
         user.setCreatedAt(new Timestamp(System.currentTimeMillis()));
@@ -186,17 +186,16 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public AuthDto login(LoginDto loginDto) {
 
+
         Authentication authentication = new UsernamePasswordAuthenticationToken(loginDto.email(), loginDto.password());
         authentication = authenticationProvider.authenticate(authentication);
         Instant now = Instant.now();
-
 
         String scope = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .filter(auth -> !auth.startsWith("ROLE_"))
                 .collect(Collectors.joining(" "));
 
-        System.out.println("scope: " + scope);
 
         List<String> authorities = authentication.getAuthorities()
                 .stream()
@@ -230,6 +229,7 @@ public class AuthServiceImpl implements AuthService {
                         String.format("User with email %s is not found.", loginDto.email())
                 )
         );
+
         user.setLoggedInAt(new Timestamp(System.currentTimeMillis()));
 
         String refreshToken = jwtRefreshTokenEncoder.encode(JwtEncoderParameters.from(refreshTokenClaimsSet)).getTokenValue();

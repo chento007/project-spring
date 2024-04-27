@@ -20,10 +20,8 @@ public interface RoleMapper {
     @UpdateProvider(type = RoleProvider.class)
     boolean update(@Param("r") Role role);
 
-
     @Select("SELECT EXISTS ( SELECT * FROM roles WHERE id = #{id} ) ")
     boolean isIdExist(@Param("id") Integer id);
-
 
     @Select("select * from roles")
     @Results(
