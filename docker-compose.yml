@@ -11,4 +11,4 @@ services:
     ports:
       - '8087:8082'
     volumes:
-      - /var/lib/jenkins/workspace/project-1//access-refresh-token-keys/:/workspace/access-refresh-token-keys/
+      - /var/lib/jenkins/workspace/project-1/access-refresh-token-keys/:/workspace/access-refresh-token-keys/
