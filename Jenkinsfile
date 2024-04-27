@@ -13,7 +13,7 @@ pipeline {
                 sh 'gradle clean build'
                 sh 'pwd'
                 echo '=======================build gradle======================='
-                sh 'docker-compose up -d --build'
+                sh 'docker compose up -d --build'
                 sh 'docker ps'
             }
         }
