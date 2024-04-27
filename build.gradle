@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'co.istad'
+version = '1.0.0'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // ui swagger
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.1.0'
+    // compress image
+    implementation 'net.coobird:thumbnailator:0.4.19'
+    // validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    // my batis
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
+    // dev tool
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    // postgres
+    runtimeOnly 'org.postgresql:postgresql'
+    // lombok
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // pagination
+    implementation 'com.github.pagehelper:pagehelper-spring-boot-starter:1.4.6'
+    // map struct
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    // jwt
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    // security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    // validation field
+    implementation 'org.passay:passay:1.6.3'
+    // mail
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    //thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    //excel
+    implementation 'org.apache.poi:poi:5.2.3'
+    implementation 'org.apache.poi:poi-ooxml:5.2.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.2'
+    //pdf
+    implementation 'org.apache.pdfbox:pdfbox:2.0.27'
+    //
+    implementation 'com.detectlanguage:detectlanguage:1.1.0'
+
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
