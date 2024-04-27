@@ -6,5 +6,5 @@ COPY ./build/libs/photostad-1.0.0.jar /workspace
 
 EXPOSE 8082
 
-ENTRYPOINT ["java","-jar","-Dspring.profiles.active=dev","./workspace/photostad-1.0.0.jar"]
+ENTRYPOINT ["java","-jar","-Dspring.profiles.active=stage","./workspace/photostad-1.0.0.jar"]
 
